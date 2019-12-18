@@ -1,0 +1,12 @@
+---
+title: "College Majors & Incomes"
+author: "Alexis Colangelo"
+date: "12/18/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
