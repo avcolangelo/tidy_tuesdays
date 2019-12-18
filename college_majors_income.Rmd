@@ -3,10 +3,54 @@ title: "College Majors & Incomes"
 author: "Alexis Colangelo"
 date: "12/18/2019"
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+```{r}
+library(tidyverse)
+library(scales)
+```
+
+Read in dataset
+```{r}
+recent_grads = read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-10-16/recent-grads.csv")
+```
+
+Distribution of median income
+```{r}
+recent_grads %>%
+  ggplot(aes(Median)) +
+  geom_histogram()
+```
+
+Major category looks like it explains a lot of the variation
+```{r}
+recent_grads %>%
+  mutate(Major_category = fct_reorder(Major_category, Median)) %>%
+  ggplot(aes(Major_category, Median)) +
+  geom_boxplot() +
+  scale_y_continuous(labels = dollar_format()) +
+  coord_flip()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
